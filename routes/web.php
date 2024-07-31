@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(Auth::user())
+    {
+        return redirect()->route('dashboard');
+    }
+    return redirect()->route('login');
 });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/login',[HomeController::class,'Login'])->name('login');
+Route::post('/loginstore',[HomeController::class,'LoginStore'])->name('loginstore');
+Route::get('/logout',[HomeController::class,'Logout'])->name('logout');
