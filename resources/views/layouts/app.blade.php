@@ -20,6 +20,7 @@
 <body>
     @yield('content')
     <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>

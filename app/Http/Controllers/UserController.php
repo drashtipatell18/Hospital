@@ -82,11 +82,14 @@ class UserController extends Controller
 
     public function myProfile()
     {
+        $users = null; // Initialize the variable
+        $roles = Role::pluck('name', 'id')->unique(); // Always get roles
+
         if (Auth::check()) {
             $userid = Auth::user()->id;
             $users = User::with('role')->find($userid);
         }
-        $roles = Role::pluck('role_name', 'id')->unique();
+
         return view('user.user_profile', compact('users', 'roles'));
     }
 
@@ -134,23 +137,5 @@ class UserController extends Controller
             ]);
         }
         return redirect()->route('myprofile')->with('success', 'Profile updated successfully');
-    }
-
-    public function loadMore(Request $request)
-    {
-        $page = $request->input('page', 1);
-        $perPage = 12; // Number of users per page
-
-        $users = User::with('role')
-            ->paginate($perPage, ['*'], 'page', $page);
-
-        $hasMore = $users->hasMorePages();
-
-        $html = view('partials.user-list', compact('users'))->render(); // Load the partial view for users
-
-        return response()->json([
-            'html' => $html,
-            'has_more' => $hasMore
-        ]);
     }
 }

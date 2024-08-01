@@ -31,6 +31,12 @@ Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashb
 Route::get('/login',[HomeController::class,'Login'])->name('login');
 Route::post('/loginstore',[HomeController::class,'LoginStore'])->name('loginstore');
 Route::get('/logout',[HomeController::class,'Logout'])->name('logout');
+Route::get('/forget-password', [DashboardController::class, 'showForgetPasswordForm'])->name('forget.password');
+Route::post('/forget-password', [DashboardController::class, 'sendResetLinkEmail'])->name('forget.password.email');
+Route::get('/reset/{token}', [DashboardController::class, 'reset'])->name('reset');
+Route::post('/reset/{token}', [DashboardController::class, 'postReset'])->name('post_reset');
+Route::get('/cpassword',[HomeController::class,'cPassword'])->name('changepass');
+Route::post('/changepassword',[HomeController::class,'changePassword'])->name('changePassword');
 
 Route::get('/user', [UserController::class, 'users'])->name('user');
 Route::get('/user/create',[UserController::class,'userCreate'])->name('create.user');
@@ -41,4 +47,3 @@ Route::get('/user/destroy/{id}',[UserController::class,'userDestroy'])->name('de
 Route::get('/user/my/profile', [UserController::class, 'myProfile'])->name('myprofile');
 Route::get('/edit-profile/{id}', [UserController::class, 'editProfile'])->name('edit-profile');
 Route::post('/update-profile/{id}', [UserController::class, 'Profileupdate'])->name('update-profile');
-Route::get('/load-more-users', [UserController::class, 'loadMore'])->name('load.more.users');

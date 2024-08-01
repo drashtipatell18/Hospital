@@ -87,29 +87,6 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            var page = 1; // Initial page number
-
-            $('#load-more-btn').on('click', function() {
-                page++;
-                $.ajax({
-                    url: "{{ route('load.more.users') }}", // Your route for loading more users
-                    type: 'GET',
-                    data: {
-                        page: page
-                    },
-                    success: function(response) {
-                        if (response.html) {
-                            $('.doctor-grid').append(response.html); // Append new data
-                        }
-                        if (!response.has_more) {
-                            $('#load-more-btn').hide(); // Hide button if no more data
-                        }
-                    },
-                    error: function(xhr) {
-                        console.error("Error loading more users:", xhr.responseText);
-                    }
-                });
-            });
             setTimeout(function() {
                 $(".alert-success").fadeOut(1000);
             }, 1000);

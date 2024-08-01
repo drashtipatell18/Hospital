@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="main-wrapper">
-        <div class="header">
+        {{-- <div class="header">
 			<div class="header-left">
 				<a href="index-2.html" class="logo">
 					<img src="{{ asset('assets/img/logo.png') }}" width="35" height="35" alt=""> <span>Preclinic</span>
@@ -50,7 +50,7 @@
                     <a class="dropdown-item" href="login.html">Logout</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
         {{-- <div class="sidebar" id="sidebar">
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
@@ -233,10 +233,8 @@
                             <span>Admin</span>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="profile.html">My Profile</a>
-                            <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-                            <a class="dropdown-item" href="settings.html">Settings</a>
-                            <a class="dropdown-item" href="login.html">Logout</a>
+                            <a class="dropdown-item" href="{{ route('myprofile') }}">My Profile</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                         </div>
                     </li>
                 </ul>
