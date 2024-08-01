@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +31,14 @@ Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashb
 Route::get('/login',[HomeController::class,'Login'])->name('login');
 Route::post('/loginstore',[HomeController::class,'LoginStore'])->name('loginstore');
 Route::get('/logout',[HomeController::class,'Logout'])->name('logout');
+
+Route::get('/user', [UserController::class, 'users'])->name('user');
+Route::get('/user/create',[UserController::class,'userCreate'])->name('create.user');
+Route::post('/user/insert',[UserController::class,'userInsert'])->name('insert.user');
+Route::get('/user/edit/{id}', [UserController::class, 'userEdit'])->name('edit.user');
+Route::put('/user/update/{id}', [UserController::class, 'userUpdate'])->name('update.user');
+Route::get('/user/destroy/{id}',[UserController::class,'userDestroy'])->name('destroy.user');
+Route::get('/user/my/profile', [UserController::class, 'myProfile'])->name('myprofile');
+Route::get('/edit-profile/{id}', [UserController::class, 'editProfile'])->name('edit-profile');
+Route::post('/update-profile/{id}', [UserController::class, 'Profileupdate'])->name('update-profile');
+Route::get('/load-more-users', [UserController::class, 'loadMore'])->name('load.more.users');
