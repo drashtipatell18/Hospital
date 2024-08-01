@@ -17,7 +17,7 @@
         @endif
         @if (session('danger'))
             <div class="alert alert-danger">
-                {{ session('dangerw') }}
+                {{ session('danger') }}
             </div>
         @endif
         <div class="row doctor-grid">
@@ -40,7 +40,7 @@
                                     <i class="fa fa-pencil m-r-5"></i> Edit
                                 </a>
                                 <a class="dropdown-item" href="#" data-toggle="modal"
-                                    data-target="#delete_doctor_{{ $user->id }}">
+                                    data-target="#delete_user_{{ $user->id }}">
                                     <i class="fa fa-trash-o m-r-5"></i> Delete
                                 </a>
                             </div>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="delete_doctor_{{ $user->id }}" class="modal fade delete-modal" role="dialog">
+                <div id="delete_user_{{ $user->id }}" class="modal fade delete-modal" role="dialog">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body text-center">

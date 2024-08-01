@@ -83,7 +83,7 @@ class HomeController extends Controller
         $user->password = Hash::make($request->new_password);
         $user->save();
 
-        return redirect()->route('dashboard')->with('success', 'Password changed successfully.');
+        return redirect()->route('login')->with('success', 'Password changed successfully.');
     }
 
     public function logout(Request $request)

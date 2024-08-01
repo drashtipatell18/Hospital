@@ -75,7 +75,6 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->back();
         session()->flash('danger', 'User Delete successfully!');
         return redirect()->back();
     }

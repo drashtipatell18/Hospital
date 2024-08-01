@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css' )}} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.min.css' )}} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css' )}} ">
+    <link href="https://cdn.datatables.net/2.1.2/css/dataTables.dataTables.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
@@ -227,13 +228,14 @@
                     <li class="nav-item dropdown has-arrow">
                         <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                             <span class="user-img">
-                                <img class="rounded-circle" src="{{ asset('assets/img/user.jpg')}}" width="24" alt="Admin">
+                                <img class="rounded-circle" src="{{ asset('users/' . auth()->user()->image) }}" width="25" alt="Admin">
                                 <span class="status online"></span>
                             </span>
-                            <span>Admin</span>
+                            <span>{{ auth()->user()->name }}</span>
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{ route('myprofile') }}">My Profile</a>
+                            <a class="dropdown-item" href="{{ route('changepass') }}">Change Password</a>
                             <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                         </div>
                     </li>
@@ -257,7 +259,13 @@
                                 <a href="index-2.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                             </li>
                             <li>
-                                <a href="{{ route('user') }}"><i class="fa fa-user-md"></i> <span>Users</span></a>
+                                <a href="{{ route('user') }}"><i class="fa fa-user"></i> <span>Users</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('department') }}"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('doctor') }}"><i class="fa fa-user-md"></i> <span>Doctor</span></a>
                             </li>
                             <li>
                                 <a href="patients.html"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
@@ -418,6 +426,7 @@
     </div>
     <div class="sidebar-overlay" data-reff=""></div>
     <script src="{{ asset('assets/js/jquery-3.2.1.min.js' )}} "></script>
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<script src="{{ asset('assets/js/popper.min.js' )}} "></script>
     <script src="{{ asset('assets/js/bootstrap.min.js' )}} "></script>
